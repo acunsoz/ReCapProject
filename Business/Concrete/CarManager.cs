@@ -16,11 +16,31 @@ namespace Business.Concrete
             _carDal = carDal;
         }
 
+        public void Add(Car car)
+        {
+            if (car.CarName.Length < 2 && car.DailyPrice < 0)
+            {
+                _carDal.Add(car);
+            }
+            else
+            {
+                Console.WriteLine("Arabanın adı 2 harften küçükse ve fiyatı 0 dan küçükse eklenemez.");
+            }
+        }
+
         public List<Car> GetAll()
         {
             return _carDal.GetAll();
         }
 
-        
+        public List<Car> GetCarsBrandId()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Car> GetCarsColorId()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
