@@ -15,6 +15,9 @@ namespace ConsoleUI
             CarManager carManager1 = new CarManager(new EfCarDal());
             ColorManager colorManager1 = new ColorManager(new EfColorDal());
             BrandManager brandManager1 = new BrandManager(new EfBrandDal());
+            RentalManager rentalManager1 = new RentalManager(new EfRentalDal());
+            
+            //AddRentalTest(rentalManager1);
 
             //GetAllCarTest(carManager1);
             //DeleteCarTest(carManager1);
@@ -36,6 +39,21 @@ namespace ConsoleUI
             //GetCarDetailTest(carManager1);
 
 
+        }
+
+        private static void AddRentalTest(RentalManager rentalManager1)
+        {
+            rentalManager1.Add(new Rental
+            {
+                CarId = 2,
+                CustomerId = 2,
+                RentDate = "05/03/2021",
+                ReturnDate = "28/03/2021"
+            });
+            foreach (var rental in rentalManager1.GetAll().Data)
+            {
+                Console.WriteLine(rental.CarId + " id li arac");
+            }
         }
 
         private static void GetCarDetailTest(CarManager carManager1)
@@ -150,7 +168,7 @@ namespace ConsoleUI
         {
             foreach (var car in carManager1.GetCarsBrandId(1).Data)
             {
-                Console.WriteLine("BrandId: "+car.BrandId +" Araba Model Yılı: " + car.ModelYear + " Fiyat: " + car.DailyPrice + " Acıklama: " + car.Description);
+                Console.WriteLine("BrandId: " + car.BrandId + " Araba Model Yılı: " + car.ModelYear + " Fiyat: " + car.DailyPrice + " Acıklama: " + car.Description);
 
             }
         }
